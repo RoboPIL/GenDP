@@ -71,6 +71,8 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/fontawesome/css/fontawesome.css">
+  <link rel="stylesheet" href="./static/fontawesome/css/brands.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -86,7 +88,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">GenDP: 3D Semantic Fields for Category-Level</br>Generalizable Diffusion Policy</h1>
-          <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://www.corl2023.org/">CoRL 2023 (Oral)</a></h3> -->
+          <h3 class="title is-4 conference-authors"><a target="_blank" href="https://www.corl.org/">CoRL 2024</a></h3>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a target="_blank" href="https://wangyixuan12.github.io/">Yixuan Wang</a><sup>1</sup>,
@@ -118,12 +120,23 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a target="_blank" href="d3fields.pdf"
+                <a target="_blank" href="media/main.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper [Coming Soon]</span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- Supp Link. -->
+              <span class="link-block">
+                <a target="_blank" href="media/supp.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supp</span>
                 </a>
               </span>
 
@@ -147,6 +160,17 @@
                 </span>
                 <span>Video</span>
               </a>
+            </span>
+
+            <!-- X Link. -->
+            <span class="link-block">
+              <a target="_blank" href="https://x.com"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </span>
+                <span>tl;dr [Coming Soon]</span>
+                </a>
             </span>
 
             <!-- Code Link. -->
@@ -341,7 +365,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Imitation learning has shown remarkable capability in executing complex robotic manipulation tasks. However, existing frameworks often fall short in structured modeling of the environment, lacking explicit characterization of geometry and semantics, which limits their ability to generalize to unseen objects and layouts. To enhance the generalization capabilities of imitation learning agents, we introduce a novel framework in this work, incorporating explicit spatial and semantic information via 3D semantic fields. We begin by generating 3D descriptor fields from multi-view RGBD observations with the help of large foundational vision models. These high-dimensional descriptor fields are then converted into low-dimensional semantic fields, which aids in the efficient training of a diffusion-based imitation learning policy. The proposed method offers explicit consideration of geometry and semantics, enabling strong generalization capabilities in tasks that require category-level generalization, resolving geometric ambiguities, and attention to subtle geometric details. We evaluate our method across eight tasks involving articulated objects and instances with varying shapes and textures from multiple object categories. Our method proves its effectiveness by outperforming state-of-the-art imitation learning baselines on unseen testing instances by 57%. Additionally, we provide a detailed analysis and visualization to interpret the sources of performance gain and explain how our method can generalize to novel instances.
+            Diffusion-based policies have shown remarkable capability in executing complex robotic manipulation tasks but lack explicit characterization of geometry and semantics, which often limits their ability to generalize to unseen objects and layouts. To enhance the generalization capabilities of Diffusion Policy, we introduce a novel framework that incorporates explicit spatial and semantic information via 3D semantic fields. We generate 3D descriptor fields from multi-view RGBD observations with large foundational vision models, then compare these descriptor fields against reference descriptors to obtain semantic fields. The proposed method explicitly considers geometry and semantics, enabling strong generalization capabilities in tasks requiring category-level generalization, resolving geometric ambiguities, and attention to subtle geometric details. We evaluate our method across eight tasks involving articulated objects and instances with varying shapes and textures from multiple object categories. Our method demonstrates its effectiveness by increasing Diffusion Policy's average success rate on <em>unseen</em> instances from 20% to 93%. Additionally, we provide a detailed analysis and visualization to interpret the sources of performance gain and explain how our method can generalize to novel instances.
           </p>
         </div>
       </div>
@@ -381,7 +405,7 @@
         </br>
         </br>
           <p class="content has-text-justified">
-            <b>Method Overview.</b> The top row shows a sequence of real policy rollouts in the aligning shoe task. At one time step, we take in multi-view RGBD observations first and then extract the 3D descriptor field, where each point has corresponding high-dimensional semantic features. We then select reference features from 2D reference images. By computing the cosine similarity between the descriptor field and 2D reference semantic features, we could obtain several similarity fields. Concatenating similarity fields with the point cloud, the representation is input into PointNet++ and diffusion policy to output predicted actions.
+            <b>Method Overview.</b> The top row (a) shows a sequence of real policy rollouts in the aligning shoe task. We first take in multi-view RGBD observations (i),  then extract the 3D descriptor field, with each point possessing a corresponding high-dimensional descriptor (ii) ~\cite{wang2023d3fields}. We then select reference features from 2D reference images. By computing the cosine similarity between the descriptor field and 2D reference semantic features, we could obtain several semantic fields (iii). These semantic fields, concatenated with the point cloud, are then input into PointNet++ and the diffusion policy to output predicted actions (iv).
           </p>
         
       <br>
@@ -616,12 +640,12 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-widescreen content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{wang2023gendp,
-      title={GenDP: 3D Semantic Fields for Category-Level Generalizable Diffusion Policy},
-      author={Wang, Yixuan and Huang, Binghao and Yin, Guang and Kelestemur, Tarik and Wang, Jiuguang and Li, Yunzhu},
-      journal={arXiv preprint arXiv:},
-      year={2024}
-    }</code></pre>
+    <pre><code>@inproceedings{wang2023gendp,
+    title={GenDP: 3D Semantic Fields for Category-Level Generalizable Diffusion Policy},
+    author={Wang, Yixuan and Yin, Guang and Huang, Binghao and Kelestemur, Tarik and Wang, Jiuguang and Li, Yunzhu},
+    booktitle={8th Annual Conference on Robot Learning},
+    year={2024}
+}</code></pre>
   </div>
 </section>
 
